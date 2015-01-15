@@ -1,0 +1,73 @@
+/**
+*
+*	Basic book stylesheet by Chris Gardiner-Bill
+*	Released under GPlv3
+*
+**/
+
+
+body
+{
+	font-family: "DejaVu Serif", serif;
+
+}
+
+h1
+{
+	page-break-before: always;
+	font-size: 16pt;
+}
+
+h2
+{
+	font-size: 14;
+	font-style: italic;
+	font-weight: condensed;
+	margin-bottom: 2cm;
+}
+
+p
+{
+	font-size: 9pt;
+	line-height: 12pt;
+	font-weight: condensed;
+	padding: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+	text-indent: 12pt;
+	text-align: justify;
+	widows: 2;
+	orphans: 2;
+}
+
+hr
+{
+	visibility: hidden;
+}
+
+hr+p, h2+p
+{
+	text-indent: 0pt;
+}
+
+h2+p::first-letter
+{
+	font-family: "URW Chancery L";
+	font-style: italic;
+	font-size: 42pt;
+	font-weight: light;
+	float: left;
+	padding: 0;
+	padding-right: 3pt;
+	height: 36pt;
+	margin-right: 6pt;
+	line-height: 40pt;
+	border-radius: 5px;
+
+}
+
+
+hr+p::first-line
+{
+	font-variant: small-caps;
+}
