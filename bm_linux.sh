@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #######################################
-# This script merges and compiles 
+# This script merges and compiles
 # markdown documents to HTML, PDF (and ePub TBC)
 # Dependencies are:
 # * MultiMarkdown
@@ -35,19 +35,19 @@ if [ -a "000_metadata.md" ]; then
 
 #grab metadata from metadata file
 title=`/usr/local/bin/multimarkdown 000_metadata.md --extract="Title"`
-short_title=`/usr/local/bin/multimarkdown 000_metadata.md --extract="ShortTitle"`
+slug=`/usr/local/bin/multimarkdown 000_metadata.md --extract="Slug"`
 author=`/usr/local/bin/multimarkdown 000_metadata.md --extract="Author"`
 
 else
 
 #check if the first file contains the metadata we need
-short_title=`/usr/local/bin/multimarkdown "$1" --extract="ShortTitle"`
+slug=`/usr/local/bin/multimarkdown "$1" --extract="Slug"`
 
 #if it doesn't we ask prompt the user
-if [ -z "$short_title" ]; then
+if [ -z "$slug" ]; then
 #create a short title from user input
 # IMPORTANT this requires Zenity to be installed!
-short_title=$( zenity --entry \
+slug=$( zenity --entry \
 	 --title="Enter filename" \
 	 --text="Enter a slug:" \
 	 --entry-text "new_title")
@@ -59,7 +59,7 @@ author=`whoami`
 else
 #extract metadata from first file
 title=`/usr/local/bin/multimarkdown "$1" --extract="Title"`
-short_title=`/usr/local/bin/multimarkdown "$1" --extract="ShortTitle"`
+slug=`/usr/local/bin/multimarkdown "$1" --extract="Slug"`
 author=`/usr/local/bin/multimarkdown "$1" --extract="Author"`
 
 
@@ -123,12 +123,12 @@ pdf_footer_right=$(awk -F, '{print $7}' <<<$OUTPUT)
 ######################################
 
 #build markdown
-cat "$@" > "build/$short_title.md"
+cat "$@" > "build/$slug.md"
 
 #build html with critic markup
-/usr/local/bin/multimarkdown -a -r "build/$short_title.md" > "build/$short_title.html"
+/usr/local/bin/multimarkdown -a -r "build/$short_title.md" > "build/$slug.html"
 
-#build pdf with wkhtmltopdf with following options 
+#build pdf with wkhtmltopdf with following options
 #See http://wkhtmltopdf.org/usage/wkhtmltopdf.txt for more information
 /usr/local/bin/wkhtmltopdf \
 	--print-media-type \
@@ -139,16 +139,16 @@ cat "$@" > "build/$short_title.md"
 	--footer-center "$pdf_footer_center" \
 	--footer-left "$pdf_footer_left" \
 	--footer-right "$pdf_footer_right" \
-	\ toc 
-	"build/$short_title.html" "build/$short_title.pdf"
+	\ toc
+	"build/$slug.html" "build/$slug.pdf"
 
-#build ePub 
+#build ePub
 #TBC
 #
 
 ## Notify user
 ## Requires Zenity
-printf "The following files were succefully built in $DIR/build/:\n $short_title.md \n $short_title.html \n $short_title.pdf" | zenity --title="Docs built!" --text-info
+printf "The following files were succefully built in $DIR/build/:\n $slug.md \n $slug.html \n $slug.pdf" | zenity --title="Docs built!" --text-info
 
 
 ##### END BUILD #####################
