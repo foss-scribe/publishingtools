@@ -5,7 +5,7 @@ A suite of shell utilities to help writers publish markdown documents to various
 Features include:
 
 * Builds markdown documents to HTML5 and PDF (more formats coming soon)
-* Support for metadata and CriticMarkup (see dependencies)
+* Support for metadata and CriticMarkup (see Dependencies)
 * Merges multiple markdown files into a single document
 * User customisable PDF output
 * Styling with CSS
@@ -49,8 +49,17 @@ To install Actions in Nautilus:
 
     $ sudo apt-get install nautilus-actions
 
-To install Actions in Caja:
+To install Caja Actions in Ubuntu MATE:
 
-Actions are not (yet) in the main repos for Caja, at least for Ubuntu MATE. A binary or source can be found at https://github.com/NiceandGently/caja-actions
+~~Actions are not (yet) in the main repos for Caja, at least for Ubuntu MATE. A binary or source can be found at https://github.com/NiceandGently/caja-actions~~
+
+Preliminary support for Caja Actions in Ubuntu MATE is now provided in the ubuntu-mate-dev/crazy-mate PPA. To install:
+
+```
+sudo apt-add-repository ppa:ubuntu-mate-dev/crazy-mate
+sudo apt-get update
+sudo apt-get dist-upgrade
+sudo apt-get install caja-actions
+```
 
 Instructions on how to use it with a Custom Actions are detailed on my [blog](http://chrisrosser.net/posts/2015-01-10-building-markdown-novels-on-linux.html)
