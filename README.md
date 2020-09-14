@@ -62,4 +62,4 @@ sudo apt-get dist-upgrade
 sudo apt-get install caja-actions
 ```
 
-Instructions on how to use it with a Custom Actions are detailed on my [blog](http://chrisrosser.net/posts/2015-01-10-building-markdown-novels-on-linux.html)
+Instructions on how to use it with a Custom Actions are detailed on my [blog](https://chrisrosser.net/posts/2015/01/10/building-markdown-novels-on-linux.html)
